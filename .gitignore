@@ -80,6 +80,8 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
 
 ### Example user template template
 ### Example user template
