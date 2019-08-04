@@ -82,6 +82,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 mvnw
 mvnw.cmd
+.mvn/
 
 ### Example user template template
 ### Example user template
