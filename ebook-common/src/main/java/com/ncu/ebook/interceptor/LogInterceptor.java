@@ -23,7 +23,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 
         String path = request.getServletPath();
 
-        String now = DateUtils.now();
+        String now = DateUtils.nowWithString();
 
         log.info("IP: {} , URL : {} , DATE : {}", ip, path, now);
 

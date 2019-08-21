@@ -30,4 +30,7 @@ public class BcryptUtils {
         return BCrypt.checkpw(password,hashed);
     }
 
+    public static void main(String[] args) {
+        System.out.println(encrypt("123456"));
+    }
 }

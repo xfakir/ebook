@@ -19,6 +19,7 @@
     <modules>
         <module>ebook-common</module>
         <module>ebook-user</module>
+        <module>ebook-gateway</module>
     </modules>
 
     <properties>

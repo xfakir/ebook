@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncu.ebook.mapper.LocalAuthorizationMapper">
+    <resultMap id="BaseResultMap" type="com.ncu.ebook.pojo.po.user.LocalAuthorization">
+        <id column="local_authorization_id" jdbcType="BIGINT" property="localAuthorizationId" />
+        <result column="principal" jdbcType="VARCHAR" property="principal" />
+        <result column="credential" jdbcType="VARCHAR" property="credential" />
+        <result column="roles" jdbcType="VARCHAR" property="roles" />
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <!--<result column="perms" jdbcType="VARCHAR" property="perms" />-->
+        <association property="userBasicInfo" javaType="com.ncu.ebook.pojo.po.user.UserBasicInfo">
+            <id column="user_id" property="userId"/>
+            <result column="nickname" property="nickname" />
+        </association>
+    </resultMap>
+    <update id="addRole">
+        update local_authorization_tb
+        set roles = CONCAT(roles,',',#{role})
+        where user_id = #{userId}
+    </update>
+    <select id="getByPrincipal" resultMap="BaseResultMap">
+        select
+               l.local_authorization_id,l.principal,l.credential,l.roles,l.status,
+               u.user_id,u.nickname
+
+        from local_authorization_tb  l LEFT JOIN user_basic_info_tb  u
+        on l.user_id = u.user_id where l.principal = #{principal} and l.status = 1
+    </select>
+
+</mapper>
