@@ -1,7 +1,13 @@
 package com.ncu.ebook.gateway.auth.event;
 
+import com.ncu.ebook.gateway.auth.core.config.DynamicFilterChainManager;
+import com.ncu.ebook.gateway.auth.pojo.UrlFilter;
+import com.ncu.ebook.gateway.auth.service.UrlFilterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @ClassName : InitFilterChainEventHandler
@@ -13,9 +19,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class InitFilterChainEventHandler {
 
+
+
+    @Autowired
+    private DynamicFilterChainManager filterChainManager;
+
     @EventListener
     public void listener(InitFilterChainEvent initFilterChainEvent) {
-        System.out.println("listening");
 
+        filterChainManager.initFilterChains((List<UrlFilter>) initFilterChainEvent.getSource());
     }
 }

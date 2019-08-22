@@ -48,6 +48,7 @@ public class UrlFilterServiceImpl implements UrlFilterService {
     @RefreshFilterChain
     @Override
     public void addUrlFilter(UrlFilter urlFilter) {
+        System.out.println("add filter: " + urlFilter);
         filterMapper.addUrlFilter(urlFilter);
     }
 
