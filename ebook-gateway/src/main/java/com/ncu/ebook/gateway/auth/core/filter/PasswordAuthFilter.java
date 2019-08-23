@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 public class PasswordAuthFilter extends FormAuthenticationFilter {
     private static final String PREFIX = "RETRY:";
 
-    private static final Long RETRY_EXPIRE_TIME = 24*60*60L;
 
 
     private RedisManager redisManager;
@@ -70,53 +69,5 @@ public class PasswordAuthFilter extends FormAuthenticationFilter {
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         return false;
     }
-
-   /* @Override
-    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
-        UserSubjectWrapper userSubjectWrapper = (UserSubjectWrapper)subject.getPrincipal();
-
-        Map<String, String> claimsMap = new HashMap<>();
-        claimsMap.put("principal", userSubjectWrapper.getPrincipal());
-        claimsMap.put("roles", StringUtils.join(userSubjectWrapper.getRoleList().toArray(), ","));
-
-        String jwtToken = JwtUtils.createJwt(claimsMap);
-        System.out.println("JwtToken" + jwtToken);
-        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        httpServletResponse.setHeader("Authorization", jwtToken);
-
-        handleRetryCache((String)token.getPrincipal(), true);
-
-        return false;
-    }*/
-
-    /*@Override
-    protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
-        String principal = (String) token.getPrincipal();
-        System.out.println("login failure");
-        handleRetryCache(principal, false);
-
-        return true;
-    }*/
-
-    /*private void handleRetryCache(String principal, Boolean isLoginSuccess) {
-        String key = PREFIX + principal;
-        Object object = redisManager.get(key);
-
-
-        if (isLoginSuccess && object != null) {
-            redisManager.del(key);
-
-        }
-        if (!isLoginSuccess){
-            if (object == null) {
-                redisManager.set(key, 0,RETRY_EXPIRE_TIME);
-            } else {
-                AtomicInteger retryCount = (AtomicInteger) object;
-                redisManager.set(key, retryCount.incrementAndGet(), RETRY_EXPIRE_TIME);
-
-            }
-
-        }
-    }*/
 
 }

@@ -7,7 +7,7 @@ import org.apache.shiro.authc.HostAuthenticationToken;
 
 /**
  * @ClassName : JwtToken
- * @Description :
+ * @Description : 用户认证JWT
  * @Author : xfakir
  * @Date : 2019-08-05 13:55
  * @Version : 1.0

@@ -9,7 +9,7 @@ import javax.servlet.ServletResponse;
 
 /**
  * @ClassName : CrossOriginFilter
- * @Description : 跨域filter
+ * @Description : 跨域filter 目前没用上
  * @Author : xfakir
  * @Date : 2019-08-11 21:55
  * @Version : 1.0

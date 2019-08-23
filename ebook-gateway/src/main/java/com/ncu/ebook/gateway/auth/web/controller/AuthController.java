@@ -28,17 +28,18 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    /**
+     * 登录
+     * @param localUser
+     * @param httpServletResponse
+     * @return
+     */
     @RequestMapping(value = "/auth")
     public EbookResult auth(LocalSignInUser localUser, HttpServletResponse httpServletResponse) {
-        //remeber me filter
+
 
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(localUser.getUsername(), localUser.getPassword());
         Subject subject = SecurityUtils.getSubject();
-        /*try {
-            subject.login(usernamePasswordToken);
-        } catch (IncorrectCredentialsException e) {
-            throw e;
-        }*/
 
         subject.login(usernamePasswordToken);
         String jwtToken = (String)subject.getPrincipal();
@@ -51,11 +52,12 @@ public class AuthController {
 
     }
 
-    @RequestMapping(value = "/unauth")
-    public EbookResult unauth() {
-        return EbookResult.build(400,"access denied,unauth", null);
-    }
-
+    /**
+     * 给User添加Role
+     * @param userId
+     * @param roleName
+     * @return
+     */
     @RequestMapping(value = "/addRole/{userId}/{roleName}")
     public EbookResult addRole(@PathVariable Long userId, @PathVariable String roleName) {
         authService.addRole(userId, roleName);

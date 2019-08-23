@@ -9,7 +9,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 
 /**
  * @ClassName : ThirdPartyRealm
- * @Description : 第三方登录
+ * @Description : 第三方登录 未实现
  * @Author : xfakir
  * @Date : 2019-08-06 19:25
  * @Version : 1.0

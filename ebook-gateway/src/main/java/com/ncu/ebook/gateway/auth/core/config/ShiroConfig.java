@@ -26,13 +26,12 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.Filter;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @ClassName : ShiroConfig
- * @Description :
+ * @Description : shiro 配置文件
  * @Author : xfakir
  * @Date : 2019-08-06 19:19
  * @Version : 1.0
@@ -58,34 +57,10 @@ public class ShiroConfig {
         filterMap.put("jwt", new JwtAuthFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
 
-        //Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        /*filterChainDefinitionMap.put("/signOut", "noSessionCreation,logout");
-        filterChainDefinitionMap.put("/static/**", "noSessionCreation,anon");
-        filterChainDefinitionMap.put("/signIn", "noSessionCreation,anon,password");
-        filterChainDefinitionMap.put("/signUp", "noSessionCreation,anon");
-
-        filterChainDefinitionMap.put("/api/v1/test", "noSessionCreation,authc,roles[admin]");*/
-        //filterChainDefinitionMap.put("/api/v1/auth", "noSessionCreation,password");
-
-        //shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;
     }
 
-    /*private String parseString(UrlFilter urlFilter) {
-        StringBuilder filter = new StringBuilder();
-
-        filter.append(urlFilter.getFilterName());
-
-        if (urlFilter.getRoles() != null) {
-            filter.append(",");
-            filter.append("roles[");
-            filter.append(urlFilter.getRoles());
-            filter.append("]");
-        }
-        return filter.toString();
-
-    }*/
 
     @Bean
     public Authenticator authenticator() {
