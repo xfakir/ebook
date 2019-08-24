@@ -15,5 +15,5 @@ public interface LocalAuthorizationMapper {
 
     LocalAuthorization getByPrincipal(String principal);
 
-    void addRole(Long userId, String role);
+    void addRole(Long userId, Integer roleId);
 }

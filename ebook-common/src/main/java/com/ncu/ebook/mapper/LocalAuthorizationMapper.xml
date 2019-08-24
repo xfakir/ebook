@@ -14,9 +14,9 @@
         </association>
     </resultMap>
     <update id="addRole">
-        update local_authorization_tb
-        set roles = CONCAT(roles,',',#{role})
-        where user_id = #{userId}
+        update local_authorization_tb l,role_tb r
+        set l.roles = CONCAT(roles,',',r.role_name)
+        where l.user_id = #{userId} and r.role_id = #{roleId}
     </update>
     <select id="getByPrincipal" resultMap="BaseResultMap">
         select

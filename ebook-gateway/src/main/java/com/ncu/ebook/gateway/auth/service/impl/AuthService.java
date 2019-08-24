@@ -36,7 +36,7 @@ public class AuthService {
         return localAuthorizationMapper.getByPrincipal(username);
     }
 
-    public void addRole(Long userId, String role) {
+    public void addRole(Long userId, Integer role) {
         localAuthorizationMapper.addRole(userId, role);
     }
 

@@ -55,12 +55,12 @@ public class AuthController {
     /**
      * 给User添加Role
      * @param userId
-     * @param roleName
+     * @param roleId
      * @return
      */
-    @RequestMapping(value = "/addRole/{userId}/{roleName}")
-    public EbookResult addRole(@PathVariable Long userId, @PathVariable String roleName) {
-        authService.addRole(userId, roleName);
+    @RequestMapping(value = "/addRole/{userId}/{roleId}")
+    public EbookResult addRole(@PathVariable Long userId, @PathVariable Integer roleId) {
+        authService.addRole(userId, roleId);
         return EbookResult.build(200,"success add", null);
     }
 }
